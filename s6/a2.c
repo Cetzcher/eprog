@@ -21,7 +21,7 @@ double diff(fptr func, double x, double h0, double tau) {
         hn = pow(2.0, -n) * h0;
         phi = diffHelper(func, x, hn);
         // hn + 1
-        phiNext = diffHelper(func, x, pow(2.0, -n + 1.0) * h0);
+        phiNext = diffHelper(func, x, pow(2.0, -(n + 1.0)) * h0);
         double difference = fabs(phi - phiNext);
         // wenn phi < tau und phi - phiNext < tau ODER andernfalls difference <= tau * |phi|
         if((phi <= tau && difference <= tau) || (phi > tau && difference <= tau * fabs(phi)))
