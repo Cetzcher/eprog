@@ -103,30 +103,30 @@ double* cutOffColK(double* matrix, int m, int n, int col) {
 }
 
 
-void printArray(double* arr, int len) {
-    int i;
-    for(i = 0; i < len; i++) 
-        printf("arr[%d] = %lf\n", i, arr[i]);
-    printf("\n");
-}
-
-int main() {
-    double* arr = mallocMatrix(2, 5);
-    arr[0] = 1;
-    arr[1] = 2;
-    arr[2] = 3;
-    arr[3] = 4;
-    arr[4] = 5;
-    arr[5] = 6;
-    arr[6] = 7;
-    arr[7] = 8;
-    arr[8] = 9;
-    arr[9] = 10;
-    
-    printmatrix(arr, 2, 5);
-    printArray(arr, 2* 5);
-    printf("after cut\n");
-    double* arr2 = cutOffColK(arr, 2, 5, 0);
-    printmatrix(arr2, 2, 4);
-    return 0;
-}
+//void printArray(double* arr, int len) {
+//    int i;
+//    for(i = 0; i < len; i++) 
+//        printf("arr[%d] = %lf\n", i, arr[i]);
+//    printf("\n");
+//}
+////
+//int main() {
+//   double* arr = mallocMatrix(2, 5);
+//   arr[0] = 1;
+//   arr[1] = 2;
+//   arr[2] = 3;
+//   arr[3] = 4;
+//   arr[4] = 5;
+//   arr[5] = 6;
+//   arr[6] = 7;
+//   arr[7] = 8;
+//   arr[8] = 9;
+//   arr[9] = 10;
+//   
+//   printmatrix(arr, 2, 5);
+//   printArray(arr, 2* 5);
+//   printf("after cut\n");
+//   double* arr2 = cutOffColK(arr, 2, 5, 0);
+//   printmatrix(arr2, 2, 4);
+//   return 0;
+//}
