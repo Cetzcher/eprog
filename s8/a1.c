@@ -158,29 +158,6 @@ double evalPolyDiff(Polynomial* p, double x, int steps) {
     return ret;
 }
 
-Polynomial* taylor(Polynomial* p, int steps, double x0 ) {
-    // TODO: code
-    Polynomial* x0Poly = newPoly(0), *rtVal = newPoly(steps);
-
-    setPolyCoef(x0Poly, 0, -x0);
-    Polynomial* delta = addPoly(p, x0Poly);
-
-    Polynomial *prod = delta;
-    double func;
-    int i, fac;
-    for(i = 0; i <= steps; i++) {
-        func = evalPolyDiff(p, x0, i);
-        if(i == 0 || i == 1) {
-            fac = 1;
-        }
-        else {
-            fac *= i;
-
-        }
-
-    }
-}
-
 int main() {
     Polynomial *p1 = newPoly(3), *p2 = newPoly(2);
     setPolyCoef(p1, 0, 10);

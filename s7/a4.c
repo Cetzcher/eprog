@@ -40,5 +40,8 @@ int main(){
     double* res = matrixvector(mat, vec, 2, 3);
     printf("mat * vec \n");
     printmatrix(res, 2, 1);
+    freeMatrix(res);
+    freeMatrix(mat);
+    free(vec);
     return 0;
 }
