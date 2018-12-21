@@ -2,35 +2,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <math.h>
-
-/*
-    gcc -c a1.h -o a1Header.out &&
-    gcc -c a1.c -o a1C.out &&
-    gcc a1Header.out a1C.out -o app &&
-    ./app &&
-    rm ./a1Header.out ./a1C.out ./app
-*/
-
-typedef struct Polynomial {
-    int degree;
-    double* coef;
-} Polynomial;
-
-Polynomial* newPoly(int degree);
-void delPoly(Polynomial* poly);
-int getPolyDegree(Polynomial* poly);
-double getPolyCoef(Polynomial* poly, int idx);
-void setPolyCoef(Polynomial* poly, int idx, double val);
-Polynomial* addPoly(Polynomial* p1, Polynomial* p2);
-Polynomial* multPoly(Polynomial* p1, Polynomial* p2);
-Polynomial* multPolyDouble(Polynomial* p1, double d);
-double evalPoly(Polynomial* p, double x);
-double evalPolyDiff(Polynomial* p, double x, int steps);
-Polynomial* taylor(Polynomial* p, int steps, double x0);
-
-Polynomial* greater(Polynomial* p1, Polynomial* p2);
-Polynomial* lesser(Polynomial* p1, Polynomial* p2);
-Polynomial* invertPoly(Polynomial* p);
+#include "a1.h"
 
 // Helper functions
 inline Polynomial* lesser(Polynomial* p1, Polynomial* p2) {
@@ -158,19 +130,19 @@ double evalPolyDiff(Polynomial* p, double x, int steps) {
     return ret;
 }
 
-int main() {
-    Polynomial *p1 = newPoly(3), *p2 = newPoly(2);
-    setPolyCoef(p1, 0, 10);
-    setPolyCoef(p1, 1, 3);
-    setPolyCoef(p1, 2, 8);
-    setPolyCoef(p1, 3, 4);
-    //  (10 * x^0 + 3 * x^1 + 8 * x^2 + 4 * x^3)
-    setPolyCoef(p2, 0, 10);
-    setPolyCoef(p2, 1, 0);
-    setPolyCoef(p2, 2, 2);
-    Polynomial *res = multPoly(p1, p2);   
-    printf("0: %lf  1: %lf 2: %lf 3: %lf 4: %lf\n", getPolyCoef(res, 0), getPolyCoef(res, 1), getPolyCoef(res, 2), getPolyCoef(res, 3), getPolyCoef(res, 4));
-    //printf("%lf", evalPoly(p1, 3, 3));
-    printf("%lf\n", evalPoly(p1, 5));
-    printf("%lf", evalPolyDiff(p1, 5, 4));
-}
+// int main() {
+//     Polynomial *p1 = newPoly(3), *p2 = newPoly(2);
+//     setPolyCoef(p1, 0, 10);
+//     setPolyCoef(p1, 1, 3);
+//     setPolyCoef(p1, 2, 8);
+//     setPolyCoef(p1, 3, 4);
+//     //  (10 * x^0 + 3 * x^1 + 8 * x^2 + 4 * x^3)
+//     setPolyCoef(p2, 0, 10);
+//     setPolyCoef(p2, 1, 0);
+//     setPolyCoef(p2, 2, 2);
+//     Polynomial *res = multPoly(p1, p2);   
+//     printf("0: %lf  1: %lf 2: %lf 3: %lf 4: %lf\n", getPolyCoef(res, 0), getPolyCoef(res, 1), getPolyCoef(res, 2), getPolyCoef(res, 3), getPolyCoef(res, 4));
+//     //printf("%lf", evalPoly(p1, 3, 3));
+//     printf("%lf\n", evalPoly(p1, 5));
+//     printf("%lf", evalPolyDiff(p1, 5, 4));
+// }
