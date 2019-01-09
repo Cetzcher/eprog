@@ -1,13 +1,13 @@
 #ifndef A5
 #define A5
 
-#include <time.h>
+#include <ctime>
 
 class Stopwatch {
 
     private:
-        timespec start;
-        timespec stop;
+        clock_t start;
+        clock_t end;
         bool started;
 
     public:
