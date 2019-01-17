@@ -138,17 +138,20 @@ int Matrix::getSize() const {
     return dim;
 }
 
-Matrix Matrix::operator* (const Vector& vec) {
+Vector Matrix::operator* (const Vector& vec) {
     assert(this->getSize() == vec.getSize());
-    Matrix mat(dim, type);
+    Vector vecRes(vec.getSize());
+    double sum;
     for(int i = 0; i < getSize(); i++) {
         for(int j = 0; j < getSize(); j++) {
             double mVal = getEntry(i, j);
             double vVal = vec.get(j);
-            mat.setEntry(i, j, mVal * vVal); 
+            sum += mVal * vVal;
         }
+        vecRes.set(i, sum);
+        sum = 0;
     }
-    return mat;
+    return vecRes;
 }
 
 Matrix* Matrix::createMatrix(int n, Matrix::Type type) {
@@ -172,22 +175,29 @@ int main() {
     std::cout << "row norm " << x.rowSumNorm() << std::endl;
     x.print();
 
-    //std::cout << " \nenter printed matrix" << std::endl;
-    //Matrix* m = Matrix::createMatrix(2, Matrix::Type::U);
-    //m->print();
+
+    bool readPrintedMatrix;
+    std::cout << "scan matirx from stdin ? [0, 1]: " << std::endl;
+    if((std::cin >> readPrintedMatrix) && readPrintedMatrix) {
+        std::cout << " \nenter printed matrix" << std::endl;
+        Matrix* m = Matrix::createMatrix(2, Matrix::Type::U);
+        m->print();
+    }
+
 
     Vector vec(3);
     vec.set(0, 2);
     vec.set(1, 4);
     vec.set(2, 8);
-    std::cout << "vec is: ";
+    std::cout << "vec is: " << std::endl;
     vec.print();
 
-    std::cout << "multiplying " << std::endl;
-    Matrix prod = x * vec;
+    std::cout << "\nmultiplying " << std::endl;
+    Vector prod = x * vec;
+    std::cout << " x * vec = " << std::endl;
     prod.print();
 
-    std::cout << "random matrix " << std::endl;
+    std::cout << "\nrandom matrix " << std::endl;
     Matrix m(5, Matrix::Type::L, 3, 30);
     m.print();
     return 0;

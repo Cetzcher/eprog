@@ -29,7 +29,7 @@ class Matrix
 
     static Matrix* createMatrix(int n, Matrix::Type type);
 
-    Matrix operator* (const Vector& vec);
+    Vector operator* (const Vector& vec);
     int getSize() const;
 
   private:

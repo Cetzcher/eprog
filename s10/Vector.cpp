@@ -24,7 +24,7 @@ int Vector::getSize() const {
 
 void Vector::print() {
     for(int i = 0; i < getSize(); i++) {
-        std::cout << i << ", " ;
+        std::cout << "[" << i << "] = " << get(i) << std::endl;
     }
     std::cout << std::endl;
 }
